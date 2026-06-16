@@ -1,8 +1,14 @@
-const Home = () => {
-    const container = document.createElement('div')
-    container.className = 'home'
+import Hero from '../components/Hero.js'
 
-    return container
+const Home = {
+    render() {
+        const container = document.createElement('div')
+        container.className = 'home'
+
+        container.appendChild(Hero())
+
+        return container
+    }
 }
 
 export default Home

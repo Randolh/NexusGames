@@ -16,6 +16,7 @@ const renderLayout = () => {
     
     const mainContent = document.createElement('main')
     mainContent.id = 'main-content'
+    appContainer.appendChild(mainContent)
 }
 
 const initApp = () => {
