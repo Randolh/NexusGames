@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Genesis: Overdrive on Nexus</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+
+    <!-- Header Block -->
+    <header class="header">
+        <div class="header__container">
+            <a href="index.html" class="header__logo">
+                <i class="fas fa-gamepad header__logo-icon"></i> Nexus
+            </a>
+            
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link nav__link--active">Store</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">Community</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">About</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">Support</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header__actions">
+                <div class="search">
+                    <input type="text" class="search__input" placeholder="Search games...">
+                    <button class="search__button" aria-label="Search">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                
+                <a href="#" class="header__action-link">Login</a>
+                <a href="#" class="header__action-link">
+                    <i class="fas fa-shopping-cart"></i> Cart
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="game-detail">
+        <div class="game-detail__breadcrumbs">
+            <a href="index.html" class="game-detail__breadcrumb-link">All Games</a> > 
+            <a href="#" class="game-detail__breadcrumb-link">Shooter</a> > 
+            <span>Overwatch</span>
+        </div>
+
+        <h1 class="title-primary game-detail__title">Overwatch</h1>
+
+        <!-- Game Header Block -->
+        <section class="game-header">
+            <div class="game-header__media">
+                <img src="https://www.freetogame.com/g/540/thumbnail.jpg" alt="Overwatch Screenshot" class="game-header__image">
+            </div>
+            
+            <aside class="game-header__info">
+                <p class="game-header__desc">A hero-focused first-person team shooter from Blizzard Entertainment.</p>
+                
+                <div class="game-header__meta">
+                    <div class="game-header__meta-row">
+                        <span class="game-header__meta-label">Status:</span>
+                        <span class="game-header__meta-value game-header__meta-value--highlight">Live</span>
+                    </div>
+                    <div class="game-header__meta-row">
+                        <span class="game-header__meta-label">Release Date:</span>
+                        <span class="game-header__meta-value">2022-10-04</span>
+                    </div>
+                    <div class="game-header__meta-row">
+                        <span class="game-header__meta-label">Developer:</span>
+                        <span class="game-header__meta-value"><a href="#" class="game-detail__breadcrumb-link">Blizzard Entertainment</a></span>
+                    </div>
+                    <div class="game-header__meta-row">
+                        <span class="game-header__meta-label">Publisher:</span>
+                        <span class="game-header__meta-value"><a href="#" class="game-detail__breadcrumb-link">Activision Blizzard</a></span>
+                    </div>
+                    <div class="game-header__meta-row">
+                        <span class="game-header__meta-label">Platform:</span>
+                        <span class="game-header__meta-value">Windows</span>
+                    </div>
+                </div>
+
+                <div class="game-header__tags">
+                    <span class="game-header__tag">Shooter</span>
+                    <span class="game-header__tag">Windows</span>
+                </div>
+            </aside>
+        </section>
+
+        <!-- Purchase Box Block -->
+        <section class="purchase-box">
+            <div class="purchase-box__info">
+                <h2 class="purchase-box__title">Play Overwatch</h2>
+                <span class="purchase-box__platform">
+                    <i class="fab fa-windows"></i> Windows
+                </span>
+            </div>
+            <div class="purchase-box__action">
+                <span class="purchase-box__price">Free</span>
+                <a href="https://www.freetogame.com/open/overwatch" class="button button--mint">
+                    Play Now
+                </a>
+            </div>
+        </section>
+
+        <!-- About Section Block -->
+        <section class="about">
+            <h2 class="title-secondary about__title">About This Game</h2>
+            <div class="about__content">
+                <p>The tale of the hero organization Overwatch continues in Overwatch 2. This new take on the popular team shooter changes up things a little with five-man teams, redefined classes, and new playable characters. With the adjustment to 5v5, players now have more individual impact than in the previous game.</p>
+                <p>Challenge yourself in all-new modes. Take control of a robot with your team in Push and take it to the enemy base before the enemy can take it from you. Explore all new areas, including iconic real-world cities such as New York, Rome, Monte Carlo, Toronto, and more.</p>
+                <p>Overwatch 2 features an update schedule that drops new content every nine weeks. It also boasts a regular battle pass – both free and premium. This is where some of the game’s characters will be obtained.</p>
+            </div>
+        </section>
+
+        <!-- System Requirements Block -->
+        <section class="sys-req">
+            <h2 class="title-secondary sys-req__title">System Requirements</h2>
+            <div class="sys-req__grid">
+                <div class="sys-req__box">
+                    <h3 class="sys-req__box-title">Minimum</h3>
+                    <ul class="sys-req__list">
+                        <li class="sys-req__item">
+                            <span class="sys-req__label">OS:</span>
+                            <span class="sys-req__value">Windows 10 64-bit</span>
+                        </li>
+                        <li class="sys-req__item">
+                            <span class="sys-req__label">Processor:</span>
+                            <span class="sys-req__value">Intel Core i3 or AMD Phenom X3 8650</span>
+                        </li>
+                        <li class="sys-req__item">
+                            <span class="sys-req__label">Memory:</span>
+                            <span class="sys-req__value">6 GB RAM</span>
+                        </li>
+                        <li class="sys-req__item">
+                            <span class="sys-req__label">Graphics:</span>
+                            <span class="sys-req__value">NVIDIA GeForce GTX 600 series, AMD Radeon HD 7000 series</span>
+                        </li>
+                        <li class="sys-req__item">
+                            <span class="sys-req__label">Storage:</span>
+                            <span class="sys-req__value">50 GB</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Block -->
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__brand">
+                <a href="index.html" class="header__logo">
+                    <i class="fas fa-gamepad header__logo-icon"></i> Nexus
+                </a>
+                <p class="footer__desc">Your ultimate digital distribution platform for video games and software.</p>
+            </div>
+            
+            <div class="footer__col">
+                <h4 class="footer__col-title">About Nexus</h4>
+                <ul class="footer__list">
+                    <li><a href="#" class="footer__link">About Us</a></li>
+                    <li><a href="#" class="footer__link">Careers</a></li>
+                    <li><a href="#" class="footer__link">Newsroom</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__col">
+                <h4 class="footer__col-title">Support</h4>
+                <ul class="footer__list">
+                    <li><a href="#" class="footer__link">Help Center</a></li>
+                    <li><a href="#" class="footer__link">Refund Policy</a></li>
+                    <li><a href="#" class="footer__link">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__col">
+                <h4 class="footer__col-title">Legal</h4>
+                <ul class="footer__list">
+                    <li><a href="#" class="footer__link">Terms of Service</a></li>
+                    <li><a href="#" class="footer__link">Privacy Policy</a></li>
+                    <li><a href="#" class="footer__link">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer__bottom">
+            <p>&copy; 2024 Nexus Corporation. All rights reserved.</p>
+            <div class="footer__socials">
+                <a href="#" class="footer__social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="footer__social-link" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="footer__social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
