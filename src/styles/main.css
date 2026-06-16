@@ -1,0 +1,101 @@
+/* ==========================================================================
+   Variables & Theming
+   ========================================================================== */
+:root {
+  /* Default Theme: Dark (Steam-inspired) */
+  --color-bg: #171a21;
+  --color-surface: #1b2838;
+  --color-surface-hover: #2a475e;
+  --color-text: #c7d5e0;
+  --color-text-muted: #8f98a0;
+  --color-text-heading: #ffffff;
+  --color-border: #2a475e;
+  
+  /* Accent: Mint Green */
+  --color-mint: #34d399;
+  --color-mint-hover: #10b981;
+  --color-mint-active: #059669;
+
+  --font-main: 'Inter', sans-serif;
+  
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  
+  --border-radius: 4px;
+  --transition-speed: 0.3s;
+}
+
+/* Light Theme overrides */
+body.light-theme {
+  --color-bg: #f4f5f7;
+  --color-surface: #ffffff;
+  --color-surface-hover: #e2e8f0;
+  --color-text: #1e293b;
+  --color-text-muted: #64748b;
+  --color-text-heading: #0f172a;
+  --color-border: #cbd5e1;
+  
+  --color-mint: #10b981;
+  --color-mint-hover: #059669;
+  --color-mint-active: #047857;
+}
+
+/* ==========================================================================
+   Reset & Base
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-text-heading);
+  margin-bottom: var(--spacing-sm);
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+.title-primary {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.title-secondary {
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .title-primary {
+    font-size: 2rem;
+  }
+  .title-secondary {
+    font-size: 1.5rem;
+  }
+}
