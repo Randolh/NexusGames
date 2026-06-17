@@ -1,16 +1,19 @@
-const BASE_URL = 'https://www.freetogame.com/api'
+const BASE_URL = 'https://free-to-play-games-database.p.rapidapi.com/api'
 export const IMAGE_PROXY_URL = 'https://wsrv.nl/?url='
 
 export const api = {
     async request(endpoint, options = {}) {
         try {
-            const response = await fetch(`${BASE_URL}${endpoint}`, {
+            const url = `${BASE_URL}${endpoint}`;
+            const response = await fetch(url, {
+                ...options,
                 headers: {
+                    'x-rapidapi-key': '93735f4200msh8c7508e07aec214p1d5ecajsn090365aa4de6',
+                    'x-rapidapi-host': 'free-to-play-games-database.p.rapidapi.com',
                     'Content-Type': 'application/json',
                     ...options.headers
-                },
-                ...options
-            })
+                }
+            });
 
             if (!response.ok) {
                 throw new Error(`Error HTTP: ${response.status}`)
