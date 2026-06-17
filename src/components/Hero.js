@@ -32,7 +32,6 @@ class HeroComponent extends HTMLElement {
     }
 
     render(game, section) {
-        console.log(game);
         while (section.firstChild) {
             section.removeChild(section.firstChild);
         }
@@ -47,8 +46,40 @@ class HeroComponent extends HTMLElement {
         img.src = IMAGE_PROXY_URL + game.thumbnail
         img.alt = game.title
         img.className = 'hero__image'
+
+        const video = document.createElement('video')
+        video.src = `https://www.freetogame.com/g/${game.id}/videoplayback.webm`
+        video.className = 'hero__image'
+        video.style.opacity = '0'
+        video.style.zIndex = '2'
+        video.style.pointerEvents = 'none'
+        video.muted = true
+        video.loop = true
+        video.playsInline = true
+        
+        let videoError = false;
+        video.addEventListener('error', () => {
+            videoError = true;
+        });
         
         imageWrapper.appendChild(img)
+        imageWrapper.appendChild(video)
+
+        container.addEventListener('mouseenter', () => {
+            if (videoError) return;
+            video.style.opacity = '1'
+            video.play().catch(e => {
+                videoError = true;
+                video.style.opacity = '0';
+            })
+        })
+
+        container.addEventListener('mouseleave', () => {
+            if (videoError) return;
+            video.style.opacity = '0'
+            video.pause()
+            video.currentTime = 0
+        })
 
         // Content
         const content = document.createElement('div')

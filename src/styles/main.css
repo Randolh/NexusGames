@@ -99,3 +99,43 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1.5rem;
   }
 }
+
+
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+  gap: var(--spacing-xs);
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button--mint {
+  background-color: var(--color-mint);
+  color: #000000; /* Dark text for contrast on mint green */
+}
+
+.button--mint:hover {
+  background-color: var(--color-mint-hover);
+}
+
+.button--outline {
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.button--outline:hover {
+  border-color: var(--color-mint);
+  color: var(--color-mint);
+}
