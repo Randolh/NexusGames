@@ -1,4 +1,5 @@
 const BASE_URL = 'https://www.freetogame.com/api'
+export const IMAGE_PROXY_URL = 'https://wsrv.nl/?url='
 
 export const api = {
     async request(endpoint, options = {}) {

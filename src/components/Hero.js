@@ -1,3 +1,5 @@
+import { IMAGE_PROXY_URL } from "../services/api.js"
+
 const Hero = (data) => {
     const game = data || {
         title: 'Overwatch',
@@ -16,7 +18,7 @@ const Hero = (data) => {
     imageWrapper.className = 'hero__image-wrapper'
     
     const img = document.createElement('img')
-    img.src = game.thumbnail
+    img.src = IMAGE_PROXY_URL + game.thumbnail
     img.alt = game.title
     img.className = 'hero__image'
     
