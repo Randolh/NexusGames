@@ -1,72 +1,99 @@
-import { IMAGE_PROXY_URL } from "../services/api.js"
+import { api, IMAGE_PROXY_URL } from "../services/api.js"
 
-const Hero = (data) => {
-    const game = data || {
-        title: 'Overwatch',
-        thumbnail: 'https://www.freetogame.com/g/540/thumbnail.jpg',
-        short_description: 'A hero-focused first-person team shooter from Blizzard Entertainment.',
-        id: 540
+class HeroComponent extends HTMLElement {
+    constructor() {
+        super();
     }
 
-    const section = document.createElement('section')
-    section.className = 'hero'
+    async connectedCallback() {
+        this.style.display = 'contents';
 
-    const container = document.createElement('div')
-    container.className = 'hero__container'
+        const section = document.createElement('section');
+        section.className = 'hero';
+        
+        const container = document.createElement('div');
+        container.className = 'hero__container';
+        
+        const p = document.createElement('p');
+        p.textContent = 'Loading...';
+        
+        container.appendChild(p);
+        section.appendChild(container);
+        
+        this.appendChild(section);
 
-    const imageWrapper = document.createElement('div')
-    imageWrapper.className = 'hero__image-wrapper'
-    
-    const img = document.createElement('img')
-    img.src = IMAGE_PROXY_URL + game.thumbnail
-    img.alt = game.title
-    img.className = 'hero__image'
-    
-    imageWrapper.appendChild(img)
+        try {
+            const game = await api.getRandomRecommendation();
+            this.render(game, section);
+        } catch (error) {
+            console.error('Error fetching game for hero:', error);
+            p.textContent = 'Error loading game.';
+        }
+    }
 
-    // Content
-    const content = document.createElement('div')
-    content.className = 'hero__content'
+    render(game, section) {
+        console.log(game);
+        while (section.firstChild) {
+            section.removeChild(section.firstChild);
+        }
+        
+        const container = document.createElement('div')
+        container.className = 'hero__container'
 
-    const tag = document.createElement('span')
-    tag.className = 'hero__tag'
-    tag.textContent = 'Free to Play'
+        const imageWrapper = document.createElement('div')
+        imageWrapper.className = 'hero__image-wrapper'
+        
+        const img = document.createElement('img')
+        img.src = IMAGE_PROXY_URL + game.thumbnail
+        img.alt = game.title
+        img.className = 'hero__image'
+        
+        imageWrapper.appendChild(img)
 
-    const title = document.createElement('h1')
-    title.className = 'title-primary hero__title'
-    title.textContent = game.title
+        // Content
+        const content = document.createElement('div')
+        content.className = 'hero__content'
 
-    const desc = document.createElement('p')
-    desc.className = 'hero__desc'
-    desc.textContent = game.short_description
+        const tag = document.createElement('span')
+        tag.className = 'hero__tag'
+        tag.textContent = 'Free to Play'
 
-    const priceBox = document.createElement('div')
-    priceBox.className = 'hero__price-box'
+        const title = document.createElement('h1')
+        title.className = 'title-primary hero__title'
+        title.textContent = game.title
 
-    const price = document.createElement('span')
-    price.className = 'hero__price'
-    price.textContent = 'Free'
+        const desc = document.createElement('p')
+        desc.className = 'hero__desc'
+        desc.textContent = game.short_description
 
-    const playBtn = document.createElement('a')
-    playBtn.href = `/game/${game.id}`
-    playBtn.className = 'button button--mint'
-    playBtn.setAttribute('data-link', '')
-    playBtn.textContent = 'Play Now'
+        const priceBox = document.createElement('div')
+        priceBox.className = 'hero__price-box'
 
-    priceBox.appendChild(price)
-    priceBox.appendChild(playBtn)
+        const price = document.createElement('span')
+        price.className = 'hero__price'
+        price.textContent = 'Free'
 
-    content.appendChild(tag)
-    content.appendChild(title)
-    content.appendChild(desc)
-    content.appendChild(priceBox)
+        const playBtn = document.createElement('a')
+        playBtn.href = `/game/${game.id}`
+        playBtn.className = 'button button--mint'
+        playBtn.setAttribute('data-link', '')
+        playBtn.textContent = 'Play Now'
 
-    container.appendChild(imageWrapper)
-    container.appendChild(content)
+        priceBox.appendChild(price)
+        priceBox.appendChild(playBtn)
 
-    section.appendChild(container)
+        content.appendChild(tag)
+        content.appendChild(title)
+        content.appendChild(desc)
+        content.appendChild(priceBox)
 
-    return section
+        container.appendChild(imageWrapper)
+        container.appendChild(content)
+
+        section.appendChild(container)
+    }
 }
 
-export default Hero
+customElements.define('hero-component', HeroComponent);
+
+export default HeroComponent;

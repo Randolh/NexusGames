@@ -1,11 +1,12 @@
-import Hero from '../components/Hero.js'
+import '../components/Hero.js'
 
 const Home = {
     render() {
         const container = document.createElement('div')
         container.className = 'home'
 
-        container.appendChild(Hero())
+        const hero = document.createElement('hero-component')
+        container.appendChild(hero)
 
         return container
     }
