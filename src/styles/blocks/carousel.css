@@ -1,0 +1,96 @@
+.carousel {
+  max-width: 1200px;
+  margin: var(--spacing-xl) auto;
+  padding: 0 var(--spacing-md);
+}
+
+.carousel__header {
+  margin-bottom: var(--spacing-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.carousel__nav {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.carousel__nav-button {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  width: 40px;
+  height: 40px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-speed);
+}
+
+.carousel__nav-button:hover:not(:disabled) {
+  background: var(--color-mint);
+  color: #000;
+  border-color: var(--color-mint);
+}
+
+.carousel__nav-button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.carousel__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: var(--spacing-md);
+  
+  /* Animation properties for switching pages */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.carousel__grid.carousel__grid--fading {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+@media (max-width: 992px) {
+  .carousel__grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .carousel__grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+}
+
+/* Enter animation for the whole carousel */
+.carousel--enter {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  transition: grid-template-rows 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              opacity 0.8s ease,
+              margin-top 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              margin-bottom 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.carousel--enter > * {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.carousel--enter.carousel--enter-active {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  margin-top: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+}
