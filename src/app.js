@@ -1,10 +1,12 @@
 import { router } from './router.js'
 import Header from './components/Header.js'
 import Home from './views/Home.js'
+import GameDetail from './views/GameDetail.js'
 
 // Define routes
 const routes = {
     '/': Home,
+    '/game/:id': GameDetail
 }
 
 const appContainer = document.getElementById('app')
