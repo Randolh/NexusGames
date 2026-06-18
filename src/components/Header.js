@@ -66,27 +66,7 @@ const Header = () => {
     search.appendChild(searchInput)
     search.appendChild(searchBtn)
 
-    // Login Link
-    const loginLink = document.createElement('a')
-    loginLink.href = '#/login'
-    loginLink.className = 'header__action-link'
-    loginLink.setAttribute('data-link', '')
-    loginLink.textContent = 'Login'
-
-    // Cart Link
-    const cartLink = document.createElement('a')
-    cartLink.href = '#/cart'
-    cartLink.className = 'header__action-link'
-    cartLink.setAttribute('data-link', '')
-    
-    const cartIcon = document.createElement('i')
-    cartIcon.className = 'fas fa-shopping-cart'
-    cartLink.appendChild(cartIcon)
-    cartLink.appendChild(document.createTextNode(' Cart'))
-
     actions.appendChild(search)
-    actions.appendChild(loginLink)
-    actions.appendChild(cartLink)
 
     // Assemble
     container.appendChild(logo)
