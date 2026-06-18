@@ -10,12 +10,24 @@ const Home = {
         const hero = document.createElement('hero-component')
         container.appendChild(hero)
 
-        const carousel = document.createElement('game-carousel')
-        container.appendChild(carousel)
+        const carouselNewReleases = document.createElement('game-carousel')
+        container.appendChild(carouselNewReleases)
+
+
+        const carouselTrending = document.createElement('game-carousel')
+        container.appendChild(carouselTrending)
+
+        api.getNewReleases()
+            .then(games => {
+                carouselNewReleases.setCarouselData('New Releases', games);
+            })
+            .catch(error => {
+                console.error('Error fetching new releases:', error);
+            });
 
         api.getTrendingGames()
             .then(games => {
-                carousel.setCarouselData('Trending Now', games);
+                carouselTrending.setCarouselData('Trending Now', games);
             })
             .catch(error => {
                 console.error('Error fetching trending games:', error);
