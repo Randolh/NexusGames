@@ -24,10 +24,8 @@ const Header = () => {
     navList.className = 'nav__list'
 
     const navItems = [
-        { text: 'Store', href: '#/', active: true },
-        { text: 'Community', href: '#/community', active: false },
-        { text: 'About', href: '#/about', active: false },
-        { text: 'Support', href: '#/support', active: false }
+        { text: 'Home', href: '#/', active: true },
+        { text: 'Mi biblioteca', href: '#/library', active: false }
     ]
 
     navItems.forEach(item => {
