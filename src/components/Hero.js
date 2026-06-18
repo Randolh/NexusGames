@@ -8,26 +8,23 @@ class HeroComponent extends HTMLElement {
     async connectedCallback() {
         this.style.display = 'contents';
 
-        const section = document.createElement('section');
-        section.className = 'hero';
-        
-        const container = document.createElement('div');
-        container.className = 'hero__container';
-        
-        const p = document.createElement('p');
-        p.textContent = 'Loading...';
-        
-        container.appendChild(p);
-        section.appendChild(container);
-        
-        this.appendChild(section);
-
         try {
             const game = await api.getRandomRecommendation();
+            
+            const section = document.createElement('section');
+            section.className = 'hero hero--enter';
+            this.appendChild(section);
+            
             this.render(game, section);
+            
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    section.classList.add('hero--enter-active');
+                });
+            });
+            
         } catch (error) {
             console.error('Error fetching game for hero:', error);
-            p.textContent = 'Error loading game.';
         }
     }
 

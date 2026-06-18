@@ -81,3 +81,27 @@
   font-weight: 700;
   color: var(--color-text-heading);
 }
+
+/* Animation classes for Hero entering */
+.hero--enter {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  transition: grid-template-rows 1s cubic-bezier(0.16, 1, 0.3, 1), 
+              opacity 1s ease,
+              margin-top 1s cubic-bezier(0.16, 1, 0.3, 1),
+              margin-bottom 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero--enter > * {
+  min-height: 0;
+}
+
+.hero--enter.hero--enter-active {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  margin-top: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+}
