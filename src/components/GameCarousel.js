@@ -10,9 +10,18 @@ class GameCarousel extends HTMLElement {
         this.isTransitioning = false;
     }
 
-    setCarouselData(title, games) {
+    setCarouselData(title, games, random = false) {
         this._carouselTitle = title;
-        this.games = games.slice(0, 32);
+        
+        let processedGames = [...games];
+        if (random) {
+            for (let i = processedGames.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [processedGames[i], processedGames[j]] = [processedGames[j], processedGames[i]];
+            }
+        }
+        
+        this.games = processedGames.slice(0, 32);
         this.currentPage = 0;
         
         this.render();
