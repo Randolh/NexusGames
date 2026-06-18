@@ -4,6 +4,8 @@ class GameHeader extends HTMLElement {
     constructor() {
         super();
         this.game = null;
+        this.videoError = false;
+        this.videoElement = null;
     }
 
     setGame(game) {
@@ -12,6 +14,8 @@ class GameHeader extends HTMLElement {
     }
 
     render() {
+        this.cleanupVideo();
+        this.videoError = false;
         this.style.display = 'contents';
         while (this.firstChild) {
             this.removeChild(this.firstChild);
@@ -30,6 +34,9 @@ class GameHeader extends HTMLElement {
         mainImg.alt = this.game.title;
         mainImg.className = 'game-header__image';
         mediaDiv.appendChild(mainImg);
+        
+        mediaDiv.addEventListener('mouseenter', () => this.handleMouseEnter(mediaDiv));
+        mediaDiv.addEventListener('mouseleave', () => this.handleMouseLeave());
         
         gameHeader.appendChild(mediaDiv);
 
@@ -87,6 +94,59 @@ class GameHeader extends HTMLElement {
         gameHeader.appendChild(infoAside);
         
         this.appendChild(gameHeader);
+    }
+
+    handleMouseEnter(mediaDiv) {
+        if (!this.game || this.videoError) return;
+
+        this.videoElement = document.createElement('video');
+        this.videoElement.className = 'game-header__video';
+        this.videoElement.src = `https://www.freetogame.com/g/${this.game.id}/videoplayback.webm`;
+        this.videoElement.muted = true;
+        this.videoElement.loop = true;
+        this.videoElement.playsInline = true;
+        
+        this.videoElement.style.position = 'absolute';
+        this.videoElement.style.top = '0';
+        this.videoElement.style.left = '0';
+        this.videoElement.style.width = '100%';
+        this.videoElement.style.height = '100%';
+        this.videoElement.style.objectFit = 'cover';
+        this.videoElement.style.zIndex = '2';
+        this.videoElement.style.opacity = '0';
+        this.videoElement.style.transition = 'opacity 0.3s ease';
+
+        this.videoElement.addEventListener('error', () => {
+            this.videoError = true;
+            this.cleanupVideo();
+        });
+
+        mediaDiv.appendChild(this.videoElement);
+
+        this.videoElement.play()
+            .then(() => {
+                if (this.videoElement) {
+                    this.videoElement.style.opacity = '1';
+                }
+            })
+            .catch(() => {
+                this.videoError = true;
+                this.cleanupVideo();
+            });
+    }
+
+    handleMouseLeave() {
+        this.cleanupVideo();
+    }
+
+    cleanupVideo() {
+        if (this.videoElement) {
+            this.videoElement.pause();
+            this.videoElement.removeAttribute('src');
+            this.videoElement.load();
+            this.videoElement.remove();
+            this.videoElement = null;
+        }
     }
 }
 
