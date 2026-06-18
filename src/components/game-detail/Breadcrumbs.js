@@ -20,7 +20,7 @@ class GameBreadcrumbs extends HTMLElement {
         breadcrumbs.className = 'game-detail__breadcrumbs';
         
         const bcHome = document.createElement('a');
-        bcHome.href = '/';
+        bcHome.href = '#/';
         bcHome.className = 'game-detail__breadcrumb-link';
         bcHome.setAttribute('data-link', '');
         bcHome.textContent = 'All Games';

@@ -102,7 +102,7 @@ class HeroComponent extends HTMLElement {
         price.textContent = 'Free'
 
         const playBtn = document.createElement('a')
-        playBtn.href = `/game/${game.id}`
+        playBtn.href = `#/game/${game.id}`
         playBtn.className = 'button button--mint'
         playBtn.setAttribute('data-link', '')
         playBtn.textContent = 'Play Now'

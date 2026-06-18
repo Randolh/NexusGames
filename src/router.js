@@ -4,24 +4,38 @@ export const router = {
     currentView: null,
 
     init(routes, container) {
-        this.routes = routes
-        this.container = container
+        this.routes = routes;
+        this.container = container;
 
-        window.addEventListener('popstate', () => this.navigate(window.location.pathname, false))
+        // Listen for hash changes
+        window.addEventListener('hashchange', () => this.navigate(this.getPath(), false));
         
         document.body.addEventListener('click', e => {
             const target = e.target.closest('[data-link]');
             if (target) {
-                e.preventDefault()
-                this.navigate(target.getAttribute('href'))
+                e.preventDefault();
+                this.navigate(target.getAttribute('href'));
             }
-        })
-        this.navigate(window.location.pathname, false)
+        });
+        
+        // Initial load
+        this.navigate(this.getPath(), false);
+    },
+
+    getPath() {
+        return window.location.hash.slice(1) || '/';
     },
 
     async navigate(path, pushState = true) {
+        // Normalize path to remove leading '#' if present
+        if (path.startsWith('#')) {
+            path = path.slice(1);
+        }
+
         if (pushState) {
-            window.history.pushState(null, '', path)
+            window.location.hash = path;
+            // The hashchange event will trigger and handle the actual rendering
+            return;
         }
 
         let ViewComponent = this.routes[path];
@@ -45,18 +59,18 @@ export const router = {
             }
         }
 
-        ViewComponent = ViewComponent || this.routes['/']
+        ViewComponent = ViewComponent || this.routes['/'];
 
         if (this.currentView && typeof this.currentView.unmount === 'function') {
-            this.currentView.unmount()
+            this.currentView.unmount();
         }
 
-        this.currentView = ViewComponent
+        this.currentView = ViewComponent;
 
-        this.container.replaceChildren(ViewComponent.render(params))
+        this.container.replaceChildren(ViewComponent.render(params));
 
         if (typeof ViewComponent.mount === 'function') {
-            await ViewComponent.mount(this.container, params)
+            await ViewComponent.mount(this.container, params);
         }
     }
 }

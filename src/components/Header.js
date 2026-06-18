@@ -7,7 +7,7 @@ const Header = () => {
 
     // Logo Element
     const logo = document.createElement('a')
-    logo.href = '/'
+    logo.href = '#/'
     logo.className = 'header__logo'
     logo.setAttribute('data-link', '')
     
@@ -24,10 +24,10 @@ const Header = () => {
     navList.className = 'nav__list'
 
     const navItems = [
-        { text: 'Store', href: '/', active: true },
-        { text: 'Community', href: '/community', active: false },
-        { text: 'About', href: '/about', active: false },
-        { text: 'Support', href: '/support', active: false }
+        { text: 'Store', href: '#/', active: true },
+        { text: 'Community', href: '#/community', active: false },
+        { text: 'About', href: '#/about', active: false },
+        { text: 'Support', href: '#/support', active: false }
     ]
 
     navItems.forEach(item => {
@@ -70,14 +70,14 @@ const Header = () => {
 
     // Login Link
     const loginLink = document.createElement('a')
-    loginLink.href = '/login'
+    loginLink.href = '#/login'
     loginLink.className = 'header__action-link'
     loginLink.setAttribute('data-link', '')
     loginLink.textContent = 'Login'
 
     // Cart Link
     const cartLink = document.createElement('a')
-    cartLink.href = '/cart'
+    cartLink.href = '#/cart'
     cartLink.className = 'header__action-link'
     cartLink.setAttribute('data-link', '')
     

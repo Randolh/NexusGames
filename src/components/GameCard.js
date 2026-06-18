@@ -84,7 +84,7 @@ class GameCard extends HTMLElement {
 
         // Image wrapper
         const imageWrapper = document.createElement('a');
-        imageWrapper.href = `/game/${this.game.id}`;
+        imageWrapper.href = `#/game/${this.game.id}`;
         imageWrapper.className = 'card__image-wrapper';
         imageWrapper.setAttribute('data-link', '');
 
@@ -101,7 +101,8 @@ class GameCard extends HTMLElement {
         content.className = 'card__content';
 
         const titleLink = document.createElement('a');
-        titleLink.href = `/game/${this.game.id}`;
+        titleLink.href = `#/game/${this.game.id}`;
+        titleLink.className = 'card__title-link';
         titleLink.setAttribute('data-link', '');
 
         const title = document.createElement('h3');
@@ -131,7 +132,7 @@ class GameCard extends HTMLElement {
         price.textContent = 'Free';
 
         const actionBtn = document.createElement('a');
-        actionBtn.href = `/game/${this.game.id}`;
+        actionBtn.href = `#/game/${this.game.id}`;
         actionBtn.className = 'card__action';
         actionBtn.setAttribute('aria-label', 'Play Game');
         actionBtn.setAttribute('data-link', '');
