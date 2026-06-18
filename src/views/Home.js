@@ -17,6 +17,9 @@ const Home = {
         const carouselTrending = document.createElement('game-carousel')
         container.appendChild(carouselTrending)
 
+        const carouselDiscover = document.createElement('game-carousel')
+        container.appendChild(carouselDiscover)
+
         api.getNewReleases()
             .then(games => {
                 carouselNewReleases.setCarouselData('New Releases', games);
@@ -31,6 +34,14 @@ const Home = {
             })
             .catch(error => {
                 console.error('Error fetching trending games:', error);
+            });
+
+        api.getGames()
+            .then(games => {
+                carouselDiscover.setCarouselData('Discover more games...', games, true);
+            })
+            .catch(error => {
+                console.error('Error fetching discover games:', error);
             });
 
         return container
