@@ -1,4 +1,4 @@
-import { api, IMAGE_PROXY_URL } from "../services/api.js"
+import { api, IMAGE_PROXY_URL } from "../../services/api.js"
 
 class HeroComponent extends HTMLElement {
     constructor() {
