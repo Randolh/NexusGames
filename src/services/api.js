@@ -8,6 +8,16 @@ const categories = [
 export const api = {
     async request(endpoint, options = {}) {
         try {
+            const isGetRequest = !options.method || options.method.toUpperCase() === 'GET';
+            const cacheKey = `nexus_api_${endpoint}`;
+
+            if (isGetRequest) {
+                const cachedData = sessionStorage.getItem(cacheKey);
+                if (cachedData) {
+                    return JSON.parse(cachedData);
+                }
+            }
+
             const url = `${BASE_URL}${endpoint}`;
             const response = await fetch(url, {
                 ...options,
@@ -20,10 +30,20 @@ export const api = {
             });
 
             if (!response.ok) {
-                throw new Error(`Error HTTP: ${response.status}`)
+                throw new Error(`Error HTTP: ${response.status}`);
             }
 
-            return await response.json()
+            const data = await response.json();
+
+            if (isGetRequest) {
+                try {
+                    sessionStorage.setItem(cacheKey, JSON.stringify(data));
+                } catch (e) {
+                    console.warn('SessionStorage quota exceeded or unavailable', e);
+                }
+            }
+
+            return data;
         } catch (error) {
             console.error('API Error:', error)
             throw error
