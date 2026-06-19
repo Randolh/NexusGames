@@ -1,3 +1,5 @@
+import { LibraryManager } from '../services/storage.js';
+
 class StatusButtons extends HTMLElement {
     constructor() {
         super();
@@ -22,6 +24,10 @@ class StatusButtons extends HTMLElement {
             this.removeChild(this.firstChild);
         }
 
+        if (!this.game) return;
+
+        const currentStatus = LibraryManager.getGameStatus(this.game.id);
+
         const statusOptions = [
             { id: 'playing', label: 'Jugando', icon: 'fas fa-gamepad' },
             { id: 'pending', label: 'Pendiente', icon: 'fas fa-bookmark' },
@@ -37,22 +43,29 @@ class StatusButtons extends HTMLElement {
             icon.className = status.icon;
             btn.appendChild(icon);
 
+            if (currentStatus === status.id) {
+                btn.style.backgroundColor = 'var(--color-mint)';
+                btn.style.color = '#000';
+            }
+
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
                 
-                const originalIcon = icon.className;
+                const isCurrentlyActive = LibraryManager.getGameStatus(this.game.id) === status.id;
+                
+                if (isCurrentlyActive) {
+                    LibraryManager.removeGame(this.game.id);
+                } else {
+                    LibraryManager.saveGame(this.game, status.id);
+                }
                 icon.className = 'fas fa-check-circle';
                 btn.style.backgroundColor = 'var(--color-mint)';
                 btn.style.color = '#000';
                 
-                // TODO: Save status to local storage or API using this.game.id
-                
                 setTimeout(() => {
-                    icon.className = originalIcon;
-                    btn.style.backgroundColor = '';
-                    btn.style.color = '';
-                }, 1000);
+                    this.render();
+                }, 800);
             });
             this.appendChild(btn);
         });
