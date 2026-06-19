@@ -68,10 +68,18 @@ export const router = {
 
         this.currentView = ViewComponent;
 
+        // Fade out animation
+        this.container.classList.add('page-exit');
+        await new Promise(resolve => setTimeout(resolve, 250)); // Wait for animation
+
         this.container.replaceChildren(ViewComponent.render(params));
 
         if (typeof ViewComponent.mount === 'function') {
             await ViewComponent.mount(this.container, params);
         }
+
+        // Trigger reflow and fade in
+        void this.container.offsetWidth;
+        this.container.classList.remove('page-exit');
     }
 }
