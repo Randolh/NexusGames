@@ -169,7 +169,7 @@
 .purchase-box__price {
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--color-text-heading);
+  color: white;
   margin-right: var(--spacing-md);
 }
 
