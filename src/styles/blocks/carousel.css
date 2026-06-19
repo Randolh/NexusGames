@@ -5,7 +5,7 @@
 }
 
 .carousel__header {
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-xs);
   display: flex;
   justify-content: space-between;
   align-items: center;
