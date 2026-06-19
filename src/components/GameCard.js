@@ -1,4 +1,5 @@
 import { IMAGE_PROXY_URL } from '../services/api.js';
+import './StatusButtons.js';
 
 class GameCard extends HTMLElement {
     constructor() {
@@ -94,7 +95,15 @@ class GameCard extends HTMLElement {
         img.className = 'card__image';
         img.loading = 'lazy';
 
+        const overlay = document.createElement('div');
+        overlay.className = 'card__overlay';
+
+        const statusBtnsComponent = document.createElement('status-buttons');
+        statusBtnsComponent.setGame(this.game);
+        overlay.appendChild(statusBtnsComponent);
+
         imageWrapper.appendChild(img);
+        imageWrapper.appendChild(overlay);
 
         // Content
         const content = document.createElement('div');
