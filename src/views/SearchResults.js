@@ -48,7 +48,8 @@ const SearchResults = {
                 } else {
                     const carousel = document.createElement('game-carousel');
                     container.appendChild(carousel);
-                    carousel.setCarouselData(`${results.length} games found`, results);
+                    const displayCount = Math.min(results.length, 32);
+                    carousel.setCarouselData(`Showing ${displayCount} games`, results);
                 }
             } catch (error) {
                 if (container.contains(loading)) container.removeChild(loading);
