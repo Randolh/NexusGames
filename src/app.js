@@ -4,6 +4,8 @@ import Home from './views/Home.js'
 import GameDetail from './views/GameDetail.js'
 import Library from './views/Library.js'
 
+import Footer from './components/Footer.js'
+
 import SearchResults from './views/SearchResults.js'
 
 // Define routes
@@ -24,6 +26,8 @@ const renderLayout = () => {
     const mainContent = document.createElement('main')
     mainContent.id = 'main-content'
     appContainer.appendChild(mainContent)
+
+    appContainer.appendChild(Footer())
 }
 
 const initApp = () => {
