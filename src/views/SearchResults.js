@@ -30,15 +30,21 @@ const SearchResults = {
         }
 
         // Loading state
-        const loading = document.createElement('div');
-        loading.className = 'loading-spinner';
-        loading.textContent = 'Searching...';
-        container.appendChild(loading);
+        const loadingContainer = document.createElement('div');
+        loadingContainer.className = 'search-loading-container';
+        loadingContainer.innerHTML = `
+            <div class="spinner-arc"></div>
+            <span class="loading-text">Loading...</span>
+        `;
+        container.appendChild(loadingContainer);
 
         const fetchResults = async () => {
             try {
+                // Simulated wait time
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                
                 const results = await api.searchGames(query);
-                if (container.contains(loading)) container.removeChild(loading);
+                if (container.contains(loadingContainer)) container.removeChild(loadingContainer);
 
                 if (results.length === 0) {
                     const empty = document.createElement('div');
@@ -52,7 +58,7 @@ const SearchResults = {
                     carousel.setCarouselData(`Showing ${displayCount} games`, results);
                 }
             } catch (error) {
-                if (container.contains(loading)) container.removeChild(loading);
+                if (container.contains(loadingContainer)) container.removeChild(loadingContainer);
                 const errorMsg = document.createElement('div');
                 errorMsg.className = 'library__empty';
                 errorMsg.innerHTML = '<i class="fas fa-exclamation-triangle library__empty-icon"></i><p>Error performing search.</p>';
