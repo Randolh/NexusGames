@@ -38,6 +38,27 @@
   border-color: var(--color-mint);
 }
 
+@media (max-width: 576px) {
+  .library__filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: var(--spacing-sm);
+    padding-bottom: var(--spacing-xs);
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .library__filters::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .library__filter-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+}
+
 .library__filter-btn--active {
   background-color: var(--color-mint);
   color: #000;
