@@ -5,6 +5,7 @@ import '../components/game-detail/PurchaseBox.js';
 import '../components/game-detail/AboutSection.js';
 import '../components/game-detail/SystemReqs.js';
 import '../components/game-detail/Screenshots.js';
+import '../components/StatusButtons.js';
 
 const GameDetail = {
     render(params) {
@@ -29,10 +30,31 @@ const GameDetail = {
             breadcrumbs.setGame(game);
             viewContainer.appendChild(breadcrumbs);
 
+            const titleContainer = document.createElement('div');
+            titleContainer.style.display = 'flex';
+            titleContainer.style.justifyContent = 'space-between';
+            titleContainer.style.alignItems = 'center';
+            titleContainer.style.marginBottom = 'var(--spacing-lg)';
+            titleContainer.style.flexWrap = 'wrap';
+            titleContainer.style.gap = 'var(--spacing-md)';
+
             const titlePrimary = document.createElement('h1');
             titlePrimary.className = 'title-primary game-detail__title';
             titlePrimary.textContent = game.title;
-            viewContainer.appendChild(titlePrimary);
+            titlePrimary.style.marginBottom = '0';
+
+            const statusContainer = document.createElement('div');
+            statusContainer.style.display = 'flex';
+            statusContainer.style.gap = 'var(--spacing-sm)';
+
+            const statusBtns = document.createElement('status-buttons');
+            statusBtns.setGame(game);
+            statusContainer.appendChild(statusBtns);
+
+            titleContainer.appendChild(titlePrimary);
+            titleContainer.appendChild(statusContainer);
+            
+            viewContainer.appendChild(titleContainer);
 
             const gameHeader = document.createElement('game-header-section');
             gameHeader.setGame(game);
