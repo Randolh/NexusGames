@@ -4,11 +4,14 @@ import Home from './views/Home.js'
 import GameDetail from './views/GameDetail.js'
 import Library from './views/Library.js'
 
+import SearchResults from './views/SearchResults.js'
+
 // Define routes
 const routes = {
     '/': Home,
     '/game/:id': GameDetail,
-    '/library': Library
+    '/library': Library,
+    '/search': SearchResults
 }
 
 const appContainer = document.getElementById('app')

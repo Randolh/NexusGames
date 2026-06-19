@@ -38,7 +38,8 @@ export const router = {
             return;
         }
 
-        let ViewComponent = this.routes[path];
+        const [basePath] = path.split('?');
+        let ViewComponent = this.routes[basePath];
         let params = {};
 
         if (!ViewComponent) {
@@ -46,7 +47,7 @@ export const router = {
                 if (route.includes('/:')) {
                     const regexPath = route.replace(/:([a-zA-Z0-9_]+)/g, '([^/]+)');
                     const regex = new RegExp('^' + regexPath + '$');
-                    const match = path.match(regex);
+                    const match = basePath.match(regex);
                     if (match) {
                         ViewComponent = this.routes[route];
                         const paramNames = [...route.matchAll(/:([a-zA-Z0-9_]+)/g)].map(m => m[1]);

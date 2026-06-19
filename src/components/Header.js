@@ -1,3 +1,5 @@
+import './SearchBar.js';
+
 const Header = () => {
     const header = document.createElement('header')
     header.className = 'header'
@@ -64,25 +66,8 @@ const Header = () => {
     actions.className = 'header__actions'
 
     // Search Block
-    const search = document.createElement('div')
-    search.className = 'search'
-    
-    const searchInput = document.createElement('input')
-    searchInput.type = 'text'
-    searchInput.className = 'search__input'
-    searchInput.placeholder = 'Search games...'
-    
-    const searchBtn = document.createElement('button')
-    searchBtn.className = 'search__button'
-    searchBtn.setAttribute('aria-label', 'Search')
-    const searchIcon = document.createElement('i')
-    searchIcon.className = 'fas fa-search'
-    searchBtn.appendChild(searchIcon)
-    
-    search.appendChild(searchInput)
-    search.appendChild(searchBtn)
-
-    actions.appendChild(search)
+    const searchBar = document.createElement('search-bar');
+    actions.appendChild(searchBar);
 
     // Assemble
     container.appendChild(logo)

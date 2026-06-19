@@ -56,6 +56,13 @@ export const api = {
         return this.request(endpoint)
     },
 
+    async searchGames(query) {
+        if (!query) return [];
+        const games = await this.getGames();
+        const lowerQuery = query.toLowerCase();
+        return games.filter(game => game.title.toLowerCase().includes(lowerQuery));
+    },
+
     getGameDetails(id) {
         if (!id) throw new Error('Se requiere el ID del juego')
         return this.request(`/game?id=${id}`)
