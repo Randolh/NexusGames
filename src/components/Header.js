@@ -1,4 +1,5 @@
 import './SearchBar.js';
+import './ThemeToggle.js';
 
 const Header = () => {
     const header = document.createElement('header')
@@ -68,6 +69,10 @@ const Header = () => {
     // Search Block
     const searchBar = document.createElement('search-bar');
     actions.appendChild(searchBar);
+
+    // Theme Toggle Component
+    const themeToggle = document.createElement('theme-toggle');
+    actions.appendChild(themeToggle);
 
     // Assemble
     container.appendChild(logo)
