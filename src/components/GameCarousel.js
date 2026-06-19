@@ -1,4 +1,4 @@
-import '../GameCard.js';
+import './GameCard.js';
 
 class GameCarousel extends HTMLElement {
     constructor() {

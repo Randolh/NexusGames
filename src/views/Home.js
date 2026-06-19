@@ -1,5 +1,5 @@
-import '../components/home/Hero.js'
-import '../components/home/GameCarousel.js'
+import '../components/Hero.js'
+import '../components/GameCarousel.js'
 import { api } from '../services/api.js'
 
 const Home = {

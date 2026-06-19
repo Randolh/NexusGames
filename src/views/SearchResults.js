@@ -1,5 +1,5 @@
 import { api } from '../services/api.js';
-import '../components/home/GameCarousel.js';
+import '../components/GameCarousel.js';
 
 const SearchResults = {
     render(params) {
