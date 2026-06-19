@@ -120,8 +120,9 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-end;
-  padding: var(--spacing-sm);
-  gap: var(--spacing-sm);
+  padding-top: var(--spacing-xs);
+  padding-right: var(--spacing-xs);
+  gap: var(--spacing-xs);
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
@@ -139,6 +140,8 @@
   border-radius: 50%;
   width: 40px;
   height: 40px;
+  flex-shrink: 0;
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
