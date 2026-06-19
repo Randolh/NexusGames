@@ -25,7 +25,7 @@ const Header = () => {
 
     const navItems = [
         { text: 'Home', href: '#/', active: true },
-        { text: 'Mi biblioteca', href: '#/library', active: false }
+        { text: 'My Library', href: '#/library', active: false }
     ]
 
     navItems.forEach(item => {

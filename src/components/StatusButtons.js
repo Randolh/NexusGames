@@ -29,9 +29,9 @@ class StatusButtons extends HTMLElement {
         const currentStatus = LibraryManager.getGameStatus(this.game.id);
 
         const statusOptions = [
-            { id: 'playing', label: 'Jugando', icon: 'fas fa-gamepad' },
-            { id: 'pending', label: 'Pendiente', icon: 'fas fa-bookmark' },
-            { id: 'finished', label: 'Finalizado', icon: 'fas fa-check' }
+            { id: 'playing', label: 'Playing', icon: 'fas fa-gamepad' },
+            { id: 'pending', label: 'Pending', icon: 'fas fa-bookmark' },
+            { id: 'finished', label: 'Finished', icon: 'fas fa-check' }
         ];
         
         statusOptions.forEach(status => {

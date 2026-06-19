@@ -11,17 +11,17 @@ const Library = {
         
         const title = document.createElement('h1');
         title.className = 'title-primary library__title';
-        title.textContent = 'Mi Biblioteca';
+        title.textContent = 'My Library';
         header.appendChild(title);
 
         const filterNav = document.createElement('nav');
         filterNav.className = 'library__filters';
 
         const filters = [
-            { id: 'all', label: 'Todos' },
-            { id: 'playing', label: 'Jugando' },
-            { id: 'pending', label: 'Pendiente' },
-            { id: 'finished', label: 'Finalizado' }
+            { id: 'all', label: 'All' },
+            { id: 'playing', label: 'Playing' },
+            { id: 'pending', label: 'Pending' },
+            { id: 'finished', label: 'Finished' }
         ];
 
         let currentFilter = 'all';
@@ -48,7 +48,7 @@ const Library = {
                 icon.className = 'fas fa-ghost library__empty-icon';
                 
                 const text = document.createElement('p');
-                text.textContent = 'No hay juegos en esta categoría.';
+                text.textContent = 'No games in this category.';
                 
                 emptyState.appendChild(icon);
                 emptyState.appendChild(text);
