@@ -124,11 +124,11 @@ class GameCard extends HTMLElement {
 
         const genreTag = document.createElement('span');
         genreTag.className = 'card__tag';
-        genreTag.textContent = this.game.genre;
+        genreTag.textContent = this.game.genre || 'N/A';
 
         const platformTag = document.createElement('span');
         platformTag.className = 'card__tag';
-        platformTag.textContent = this.game.platform.split(',')[0].trim();
+        platformTag.textContent = this.game.platform ? this.game.platform.split(',')[0].trim() : 'PC';
 
         tags.appendChild(genreTag);
         tags.appendChild(platformTag);

@@ -2,11 +2,13 @@ import { router } from './router.js'
 import Header from './components/Header.js'
 import Home from './views/Home.js'
 import GameDetail from './views/GameDetail.js'
+import Library from './views/Library.js'
 
 // Define routes
 const routes = {
     '/': Home,
-    '/game/:id': GameDetail
+    '/game/:id': GameDetail,
+    '/library': Library
 }
 
 const appContainer = document.getElementById('app')

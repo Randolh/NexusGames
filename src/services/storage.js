@@ -17,6 +17,8 @@ export const LibraryManager = {
             id: game.id,
             title: game.title,
             thumbnail: game.thumbnail,
+            genre: game.genre,
+            platform: game.platform,
             status: status,
             savedAt: new Date().toISOString()
         };
