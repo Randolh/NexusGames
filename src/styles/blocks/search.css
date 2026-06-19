@@ -42,13 +42,13 @@
 
 @media (max-width: 992px) {
   .search__input {
-    width: 140px;
+    width: 100%;
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
   .search {
-    display: none;
+    max-width: 100%;
   }
 }
 

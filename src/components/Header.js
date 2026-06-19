@@ -45,17 +45,27 @@ const Header = () => {
 
     navItems.forEach(item => {
         const li = document.createElement('li')
-        li.className = 'nav__item'
-        
         const a = document.createElement('a')
         a.href = item.href
         a.className = 'nav__link'
-        a.setAttribute('data-link', '')
         a.textContent = item.text
+        a.setAttribute('data-link', '')
         
+        // Basic active state logic
+        if (window.location.hash === item.href || (window.location.hash === '' && item.href === '#/')) {
+            a.classList.add('nav__link--active')
+        }
+
         li.appendChild(a)
         navList.appendChild(li)
     })
+
+    const searchLi = document.createElement('li');
+    searchLi.className = 'nav__search-item';
+    const searchBar = document.createElement('search-bar');
+    searchLi.appendChild(searchBar);
+    navList.appendChild(searchLi);
+
     nav.appendChild(navList)
 
     // Set initial active state and listen for changes
@@ -65,10 +75,6 @@ const Header = () => {
     // Header Actions
     const actions = document.createElement('div')
     actions.className = 'header__actions'
-
-    // Search Block
-    const searchBar = document.createElement('search-bar');
-    actions.appendChild(searchBar);
 
     // Theme Toggle Component
     const themeToggle = document.createElement('theme-toggle');

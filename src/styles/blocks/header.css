@@ -34,6 +34,9 @@
 .nav__list {
   display: flex;
   gap: var(--spacing-lg);
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .nav__link {
@@ -54,8 +57,17 @@
     margin-top: var(--spacing-sm);
     display: flex;
     justify-content: center;
-    overflow-x: auto;
     padding-bottom: var(--spacing-xs);
+  }
+  
+  .nav__list {
+    gap: var(--spacing-md);
+    width: 100%;
+  }
+
+  .nav__search-item {
+    width: 100%;
+    margin-top: var(--spacing-xs);
   }
 }
 
@@ -64,8 +76,6 @@
   align-items: center;
   gap: var(--spacing-md);
 }
-
-
 
 .header__action-link {
   color: var(--color-text-muted);
