@@ -18,10 +18,10 @@ class SearchBar extends HTMLElement {
         this.query = e.target.value.trim();
         
         if (this.query.length > 0) {
-            // Navegar directamente a la página de resultados mientras escribe
+            // Navigate directly to results page while typing
             window.location.hash = `/search?q=${encodeURIComponent(this.query)}`;
         } else if (window.location.hash.startsWith('#/search')) {
-            // Si borra todo y está en la página de búsqueda, mostrar vacío
+            // If cleared and on search page, show empty state
             window.location.hash = `/search?q=`;
         }
     }
@@ -48,7 +48,7 @@ class SearchBar extends HTMLElement {
         input.className = 'search__input';
         input.placeholder = 'Search games...';
         
-        // Si ya estamos en una búsqueda, rellenar el input
+        // If already searching, fill input
         if (window.location.hash.startsWith('#/search')) {
             const urlParams = new URLSearchParams(window.location.hash.split('?')[1]);
             const q = urlParams.get('q');

@@ -22,6 +22,7 @@ export const router = {
         this.navigate(this.getPath(), false);
     },
 
+    // Get current path from hash
     getPath() {
         return window.location.hash.slice(1) || '/';
     },
@@ -38,10 +39,12 @@ export const router = {
             return;
         }
 
+        // Separate base path from search parameters
         const [basePath] = path.split('?');
         let ViewComponent = this.routes[basePath];
         let params = {};
 
+        // Find matches for dynamic routes with parameters
         if (!ViewComponent) {
             for (const route in this.routes) {
                 if (route.includes('/:')) {
@@ -60,8 +63,10 @@ export const router = {
             }
         }
 
+        // Use root route as default if no match is found
         ViewComponent = ViewComponent || this.routes['/'];
 
+        // Unmount active view before changing
         if (this.currentView && typeof this.currentView.unmount === 'function') {
             this.currentView.unmount();
         }
@@ -72,8 +77,10 @@ export const router = {
         this.container.classList.add('page-exit');
         await new Promise(resolve => setTimeout(resolve, 250)); // Wait for animation
 
+        // Clear container and render new view
         this.container.replaceChildren(ViewComponent.render(params));
 
+        // Execute component initialization if it exists
         if (typeof ViewComponent.mount === 'function') {
             await ViewComponent.mount(this.container, params);
         }

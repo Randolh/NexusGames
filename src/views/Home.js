@@ -4,12 +4,15 @@ import { api } from '../services/api.js'
 
 const Home = {
     render() {
+        // Render main container
         const container = document.createElement('div')
         container.className = 'home'
 
+        // Create hero section
         const hero = document.createElement('hero-component')
         container.appendChild(hero)
 
+        // Create carousels for different categories
         const carouselNewReleases = document.createElement('game-carousel')
         container.appendChild(carouselNewReleases)
 

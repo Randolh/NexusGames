@@ -64,8 +64,9 @@ export const api = {
     },
 
     getGameDetails(id) {
-        if (!id) throw new Error('Se requiere el ID del juego')
-        return this.request(`/game?id=${id}`)
+        // Fetch detailed info for a specific game
+        if (!id) throw new Error('Game ID is required');
+        return this.request(`/game?id=${id}`);
     },
 
 
@@ -87,18 +88,19 @@ export const api = {
 
     async getRandomRecommendation() {
         try {
-            const games = await this.getTrendingGames()
+            // Fetch trending games to pick a random one
+            const games = await this.getTrendingGames();
 
             if (!games || games.length === 0) {
-                throw new Error('No se pudieron cargar los juegos para elegir uno al azar.')
+                throw new Error('Could not load games to pick a random recommendation.');
             }
 
-            const randomIndex = Math.floor(Math.random() * games.length)
+            const randomIndex = Math.floor(Math.random() * games.length);
 
-            return games[randomIndex]
+            return games[randomIndex];
         } catch (error) {
-            console.error('Error al obtener el juego aleatorio:', error)
-            throw error
+            console.error('Error fetching random game:', error);
+            throw error;
         }
     }
 }
