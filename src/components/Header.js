@@ -24,9 +24,21 @@ const Header = () => {
     navList.className = 'nav__list'
 
     const navItems = [
-        { text: 'Home', href: '#/', active: true },
-        { text: 'My Library', href: '#/library', active: false }
+        { text: 'Home', href: '#/' },
+        { text: 'My Library', href: '#/library' }
     ]
+
+    const updateActiveLink = () => {
+        const currentHash = window.location.hash || '#/';
+        const links = navList.querySelectorAll('.nav__link');
+        links.forEach(link => {
+            if (link.getAttribute('href') === currentHash) {
+                link.classList.add('nav__link--active');
+            } else {
+                link.classList.remove('nav__link--active');
+            }
+        });
+    };
 
     navItems.forEach(item => {
         const li = document.createElement('li')
@@ -34,7 +46,7 @@ const Header = () => {
         
         const a = document.createElement('a')
         a.href = item.href
-        a.className = `nav__link${item.active ? ' nav__link--active' : ''}`
+        a.className = 'nav__link'
         a.setAttribute('data-link', '')
         a.textContent = item.text
         
@@ -42,6 +54,10 @@ const Header = () => {
         navList.appendChild(li)
     })
     nav.appendChild(navList)
+
+    // Set initial active state and listen for changes
+    updateActiveLink();
+    window.addEventListener('hashchange', updateActiveLink);
 
     // Header Actions
     const actions = document.createElement('div')
