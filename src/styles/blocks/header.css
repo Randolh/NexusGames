@@ -65,53 +65,7 @@
   gap: var(--spacing-md);
 }
 
-.search {
-  display: flex;
-  background-color: var(--color-bg);
-  border-radius: var(--border-radius);
-  overflow: hidden;
-  border: 1px solid var(--color-border);
-  transition: border-color var(--transition-speed);
-}
 
-.search:focus-within {
-  border-color: var(--color-mint);
-}
-
-.search__input {
-  background: transparent;
-  border: none;
-  color: var(--color-text);
-  padding: 0.5rem 1rem;
-  outline: none;
-  width: 220px;
-  font-family: inherit;
-}
-
-@media (max-width: 992px) {
-  .search__input {
-    width: 140px;
-  }
-}
-
-@media (max-width: 576px) {
-  .search {
-    display: none;
-  }
-}
-
-.search__button {
-  background: transparent;
-  border: none;
-  color: var(--color-text-muted);
-  padding: 0 0.75rem;
-  cursor: pointer;
-  transition: color var(--transition-speed);
-}
-
-.search__button:hover {
-  color: var(--color-mint);
-}
 
 .header__action-link {
   color: var(--color-text-muted);

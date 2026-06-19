@@ -40,6 +40,18 @@
   color: var(--color-mint);
 }
 
+@media (max-width: 992px) {
+  .search__input {
+    width: 140px;
+  }
+}
+
+@media (max-width: 576px) {
+  .search {
+    display: none;
+  }
+}
+
 /* Search Dropdown */
 .search-dropdown {
   position: absolute;
