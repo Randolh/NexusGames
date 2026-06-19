@@ -6,6 +6,7 @@ const categories = [
 ]
 
 export const api = {
+    // Generic method to handle API requests and caching
     async request(endpoint, options = {}) {
         try {
             const isGetRequest = !options.method || options.method.toUpperCase() === 'GET';
@@ -50,12 +51,14 @@ export const api = {
         }
     },
 
+    // Get a list of games, optionally filtered by params
     getGames(params = {}) {
         const queryString = new URLSearchParams(params).toString()
         const endpoint = queryString ? `/games?${queryString}` : '/games'
         return this.request(endpoint)
     },
 
+    // Search games by title locally
     async searchGames(query) {
         if (!query) return [];
         const games = await this.getGames();
@@ -70,18 +73,22 @@ export const api = {
     },
 
 
+    // Fetch latest released games
     getNewReleases() {
         return this.request('/games?sort-by=release-date')
     },
 
+    // Fetch currently trending games
     getTrendingGames() {
         return this.request('/games?sort-by=popularity')
     },
 
+    // Filter games by platform
     getGamesByPlatform(platform) {
         return this.request(`/games?platform=${platform}`)
     },
 
+    // Filter games by category
     getGamesByCategory(category) {
         return this.request(`/games?category=${category}`)
     },
